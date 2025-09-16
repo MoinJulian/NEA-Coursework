@@ -1,5 +1,9 @@
+from fastapi import FastAPI
 import connect
 
-response = (connect.supabase.table("test").select("*").execute())
+app = FastAPI()
 
-print(response)
+@app.get("/test")
+def get_test_data():
+    response = (connect.supabase.table("test").select("*").execute())
+    return response.data
