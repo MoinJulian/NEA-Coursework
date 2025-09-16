@@ -1,0 +1,4 @@
+create table if not exists lessons (
+    id uuid primary key default gen_random_uuid(),
+    title text not null,
+);
