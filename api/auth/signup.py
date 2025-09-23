@@ -1,3 +1,4 @@
+from fastapi import HTTPException
 from connect import supabase
 
 
@@ -15,6 +16,8 @@ async def signup(email: str, password: str):
     Raises:
         Any exceptions raised by the Supabase client during the sign-up process.
     """
-    response = supabase.auth.sign_up({"email": email, "password": password})
-    print(response)
-    return response
+    try:
+        response = supabase.auth.sign_up({"email": email, "password": password})
+        return response
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))

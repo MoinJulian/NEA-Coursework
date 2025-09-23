@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, HTTPException, Request
 from auth.signup import signup
 
 app = FastAPI()
@@ -21,5 +21,8 @@ async def signup_endpoint(request: Request):
     body = await request.json()
     email = body["email"]
     password = body["password"]
-    response = await signup(email, password)
-    return response
+    try:
+        response = await signup(email, password)
+        return response
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
