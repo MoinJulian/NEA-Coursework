@@ -5,10 +5,10 @@ from auth.signup import signup
 
 app = FastAPI()
 
-@app.post("/signup")
+@app.post("/v1/signup")
 async def signupRoute(request: Request):
     return await signupEndpoint(request)
 
-@app.post("/signin")
+@app.post("/v1/signin")
 async def signinRoute(request: Request):
     return await signinEndpoint(request)
