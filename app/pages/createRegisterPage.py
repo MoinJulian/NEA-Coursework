@@ -1,0 +1,35 @@
+from tkinter import messagebox
+
+def createRegisterPage(tk, root, requests):
+    register_window = tk.Toplevel(root)
+    register_window.title("Register")
+    register_window.geometry("300x200")
+
+    tk.Label(register_window, text="Email:").pack(pady=5)
+    email_entry = tk.Entry(register_window)
+    email_entry.pack(pady=5)
+
+    tk.Label(register_window, text="Password:").pack(pady=5)
+    password_entry = tk.Entry(register_window, show="*")
+    password_entry.pack(pady=5)
+
+    def register():
+        email = email_entry.get()
+        password = password_entry.get()
+
+        response = requests.post("http://127.0.0.1:8000/v1/signup", json={
+            "email": email,
+            "password": password
+        })
+
+        print("Response:", response.json())
+
+        if response.status_code == 200:
+            print("Response:", response.json())
+            messagebox.showinfo("Success", "Registration successful!")
+        else:
+            messagebox.showerror("Error", f"Registration failed: {response.json().get('detail', 'Unknown error')}")
+        
+        register_window.wait_window()
+
+    tk.Button(register_window, text="Register", command=register).pack(pady=20)

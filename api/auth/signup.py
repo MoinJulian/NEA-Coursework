@@ -18,6 +18,6 @@ async def signup(email: str, password: str):
     """
     try:
         response = supabase.auth.sign_up({"email": email, "password": password})
-        return response
+        return {"status_code": 200, "data": response}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))

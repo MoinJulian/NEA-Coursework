@@ -2,6 +2,7 @@
     "explorer.compactFolders": false,
     "cSpell.words": [
         "dotenv",
+        "pady",
         "supabase"
     ]
 }
