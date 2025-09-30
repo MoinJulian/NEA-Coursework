@@ -22,11 +22,9 @@ def createRegisterPage(tk, root, requests):
             "password": password
         })
 
-        print("Response:", response.json())
-
         if response.status_code == 200:
-            print("Response:", response.json())
-            messagebox.showinfo("Success", "Registration successful!")
+            messagebox.showinfo("Success", "Registration successful! You can now sign in.")
+            register_window.destroy()
         else:
             messagebox.showerror("Error", f"Registration failed: {response.json().get('detail', 'Unknown error')}")
         
