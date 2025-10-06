@@ -1,6 +1,6 @@
 from tkinter import messagebox
 
-def createRegisterPage(tk, root, requests):
+def createRegisterPage(tk, root, requests, session):
     register_window = tk.Toplevel(root)
     register_window.title("Register")
     register_window.geometry("300x200")
@@ -24,7 +24,11 @@ def createRegisterPage(tk, root, requests):
 
         if response.status_code == 200:
             messagebox.showinfo("Success", "Registration successful! You can now sign in.")
+            session.email = email
+            session.access_token = response.json().get("access_token")
+            session.refresh_token = response.json().get("refresh_token")
             register_window.destroy()
+            return session
         else:
             messagebox.showerror("Error", f"Registration failed: {response.json().get('detail', 'Unknown error')}")
         
