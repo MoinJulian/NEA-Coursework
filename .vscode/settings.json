@@ -1,8 +1,285 @@
 {
-    "explorer.compactFolders": false,
-    "cSpell.words": [
-        "dotenv",
-        "pady",
-        "supabase"
-    ]
+  "[env]": {
+    "editor.defaultFormatter": "IronGeek.vscode-env"
+  },
+  "better-comments.multilineComments": true,
+  "better-comments.tags": [
+    {
+      "backgroundColor": "transparent",
+      "bold": true,
+      "color": "#FF2D00",
+      "italic": false,
+      "strikethrough": false,
+      "tag": "!",
+      "underline": false
+    },
+    {
+      "backgroundColor": "transparent",
+      "bold": false,
+      "color": "#3498DB",
+      "italic": false,
+      "strikethrough": false,
+      "tag": "?",
+      "underline": false
+    },
+    {
+      "backgroundColor": "transparent",
+      "bold": false,
+      "color": "#474747",
+      "italic": false,
+      "strikethrough": true,
+      "tag": "//",
+      "underline": false
+    },
+    {
+      "backgroundColor": "transparent",
+      "bold": false,
+      "color": "#FF8C00",
+      "italic": false,
+      "strikethrough": false,
+      "tag": "todo",
+      "underline": false
+    },
+    {
+      "backgroundColor": "transparent",
+      "bold": false,
+      "color": "#008000",
+      "italic": false,
+      "strikethrough": false,
+      "tag": "fixme",
+      "underline": false
+    },
+    {
+      "backgroundColor": "transparent",
+      "bold": false,
+      "color": "#008000",
+      "italic": false,
+      "strikethrough": false,
+      "tag": "fixit",
+      "underline": false
+    },
+    {
+      "backgroundColor": "transparent",
+      "bold": false,
+      "color": "#008000",
+      "italic": false,
+      "strikethrough": false,
+      "tag": "fix",
+      "underline": false
+    },
+    {
+      "backgroundColor": "transparent",
+      "bold": false,
+      "color": "#008000",
+      "italic": false,
+      "strikethrough": false,
+      "tag": "bug",
+      "underline": false
+    },
+    {
+      "backgroundColor": "transparent",
+      "bold": true,
+      "color": "#98C379",
+      "italic": false,
+      "strikethrough": false,
+      "tag": "*",
+      "underline": false
+    }
+  ],
+  "bookmarks.saveBookmarksInProject": false,
+  "bookmarks.showCommandsInContextMenu": true,
+  "cSpell.words": [
+    "Analyse",
+    "analysed",
+    "analysing",
+    "astro",
+    "astrojs",
+    "Berechnet",
+    "Berekend",
+    "Bois",
+    "Calcolato",
+    "Calculado",
+    "Calculé",
+    "ciphertext",
+    "DSGVO",
+    "Eisen",
+    "Ferro",
+    "Gemessen",
+    "Gemeten",
+    "Golfrules",
+    "haftungsbeschränkt",
+    "Híbrido",
+    "Hierro",
+    "Holz",
+    "Houten",
+    "Hybride",
+    "Ibrido",
+    "jgrqxbtvijhiggnoctwf",
+    "Jzer",
+    "layerchart",
+    "Legno",
+    "majeure",
+    "maxage",
+    "Medido",
+    "Mesuré",
+    "Misurato",
+    "nodenext",
+    "papaparse",
+    "PGRST",
+    "pnpx",
+    "realgolfgames",
+    "Sandwedge",
+    "shadcn",
+    "shiki",
+    "signups",
+    "Stylesheet",
+    "supabase",
+    "swingalytica",
+    "swingfile",
+    "Tauri",
+    "Unban",
+    "upserting",
+    "uuidv",
+    "vcpu",
+    "waivable"
+  ],
+  "codesnap.containerPadding": "2em",
+  "codesnap.realLineNumbers": true,
+  "codesnap.roundedCorners": true,
+  "codesnap.showWindowTitle": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.linkedEditing": true,
+  "editor.showDeprecated": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.tabCompletion": "on",
+  "emojisense.languages": {
+    "json": true,
+    "markdown": true,
+    "plaintext": false,
+    "scminput": true
+  },
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "explorer.compactFolders": false,
+  "explorer.expandSingleFolderWorkspaces": true,
+  "git-graph.commitDetailsView.location": "Docked to Bottom",
+  "git-graph.contextMenuActionsVisibility": {
+    "branch": {
+      "checkout": false,
+      "cherrypick": false,
+      "createBranch": false,
+      "createPullRequest": false,
+      "delete": false,
+      "drop": false,
+      "merge": false,
+      "push": false,
+      "rebase": false,
+      "rename": false,
+      "reset": false,
+      "revert": false
+    },
+    "commit": {
+      "checkout": false,
+      "cherrypick": false,
+      "createBranch": false,
+      "drop": false,
+      "merge": false,
+      "rebase": false,
+      "reset": false,
+      "revert": false
+    },
+    "remoteBranch": {
+      "checkout": false,
+      "cherrypick": false,
+      "createBranch": false,
+      "createPullRequest": false,
+      "delete": false,
+      "drop": false,
+      "merge": false,
+      "pull": false,
+      "rebase": false,
+      "reset": false,
+      "revert": false
+    }
+  },
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.ignoreRebaseWarning": true,
+  "git.openRepositoryInParentFolders": "always",
+  "githubPullRequests.fileListLayout": "tree",
+  "githubPullRequests.pullBranch": "never",
+  "gitlens.ai.experimental.openai.model": "gpt-3.5-turbo-1106",
+  "gitlens.ai.experimental.provider": "openai",
+  "gitlens.blame.avatars": true,
+  "gitlens.graph.layout": "editor",
+  "gitlens.hovers.avatarSize": 64,
+  "gitlens.hovers.avatars": true,
+  "gitlens.hovers.changesDiff": "hunk",
+  "gitlens.statusBar.command": "gitlens.openCommitOnRemote",
+  "gitlens.statusBar.enabled": true,
+  "indentRainbow.ignoreErrorLanguages": ["haskell"],
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "lldb.launch.expressions": "native",
+  "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB",
+  "markdownlint.config": {
+    "MD001": false,
+    "MD010": false,
+    "MD024": false,
+    "MD025": false,
+    "default": true
+  },
+  "sonarlint.focusOnNewCode": true,
+  "svelte.enable-ts-plugin": true,
+  "svelte.plugin.svelte.compilerWarnings": {
+    "css-unused-selector": "ignore"
+  },
+  "svg.preview.autoOpen": false,
+  "terminal-in-status-bar.statusBarAlignment": "right",
+  "terminal-in-status-bar.statusBarPriority": 10000,
+  "todo-tree.general.showIconsInsteadOfTagsInStatusBar": true,
+  "todo-tree.general.statusBar": "top three",
+  "todo-tree.general.tagGroups": {
+    "FIXME": ["FIXME", "FIXIT", "FIX", "BUG"]
+  },
+  "todo-tree.general.tags": ["TODO", "FIXME", "FIXIT", "FIX", "BUG"],
+  "todo-tree.highlights.customHighlight": {
+    "FIXME": {
+      "background": "#008000",
+      "fontWeight": "bold",
+      "foreground": "#FFFF00",
+      "gutterIcon": true,
+      "icon": "tools",
+      "iconColour": "#00FF00",
+      "type": "tag"
+    },
+    "TODO": {
+      "background": "#CF7200",
+      "fontWeight": "bold",
+      "foreground": "#FFFFFF",
+      "gutterIcon": true,
+      "icon": "tasklist",
+      "iconColour": "#FF8C00",
+      "type": "tag"
+    }
+  },
+  "todo-tree.tree.showCountsInTree": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": -1,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "none",
+  "workbench.tree.expandMode": "singleClick",
+  "workbench.tree.indent": 18,
+  "workbench.tree.renderIndentGuides": "always",
+  "svg.preview.background": "editor"
 }
