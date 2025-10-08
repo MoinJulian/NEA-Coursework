@@ -6,8 +6,17 @@ from pages.createRegisterPage import createRegisterPage
 session = Session()
 
 def register():
-    session = createRegisterPage(tk, root, requests, session)
-    print(session.__dict__)  # Debug print to check session state
+    global session
+    result = createRegisterPage(tk, root, requests, session)
+    if result is None:
+        # createRegisterPage probably mutated the passed session in-place
+        print("createRegisterPage returned None; keeping existing session")
+    else:
+        session = result
+    try:
+        print(session.__dict__)  # Debug print to check session state
+    except AttributeError:
+        print("session is not a Session instance:", session)
     return session
 
 root = tk.Tk()

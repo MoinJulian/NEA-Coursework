@@ -13,10 +13,14 @@ def createRegisterPage(tk, root, requests, session):
     password_entry = tk.Entry(register_window, show="*")
     password_entry.pack(pady=5)
 
+    result = None
+
     def register():
+        nonlocal result
         email = email_entry.get()
         password = password_entry.get()
 
+        # use synchronous requests here
         response = requests.post("http://127.0.0.1:8000/v1/signup", json={
             "email": email,
             "password": password
@@ -25,13 +29,12 @@ def createRegisterPage(tk, root, requests, session):
         if response.status_code == 200:
             messagebox.showinfo("Success", "Registration successful! You can now sign in.")
             session.email = email
-            session.access_token = response.json().get("access_token")
-            session.refresh_token = response.json().get("refresh_token")
+            result = session
             register_window.destroy()
-            return session
         else:
             messagebox.showerror("Error", f"Registration failed: {response.json().get('detail', 'Unknown error')}")
-        
-        register_window.wait_window()
 
     tk.Button(register_window, text="Register", command=register).pack(pady=20)
+
+    register_window.wait_window()
+    return result
