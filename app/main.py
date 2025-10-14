@@ -4,6 +4,10 @@ from pages.createLoginPage import createLoginPage
 from session import Session
 from pages.createRegisterPage import createRegisterPage
 
+root = tk.Tk()
+root.title("RuleShot™")
+root.geometry("400x300")
+
 session = Session()
 
 def register():
@@ -67,25 +71,17 @@ def logout():
     for widget in root.winfo_children():
         widget.destroy()
     tk.Label(root, text="Logged out successfully.").pack(pady=20)
-    root.after(10000, root.quit)
+    root.after(5000, main)  # Return to main after 5 seconds
 
-root = tk.Tk()
-root.title("RuleShot™")
-root.geometry("400x300")
+def main():
+    global root
 
-register_button = tk.Button(root, text="Register", command=register)
-register_button.pack(pady=20)
+    register_button = tk.Button(root, text="Register", command=register)
+    register_button.pack(pady=20)
 
-login_button = tk.Button(root, text="Login", command=login)
-login_button.pack(pady=20)
+    login_button = tk.Button(root, text="Login", command=login)
+    login_button.pack(pady=20)
 
-test_button = tk.Button(root, text="Test Session", command=lambda: print_session(session))
-test_button.pack(pady=20)
-
-def print_session(session):
-    try:
-        print(session.__dict__)  # Debug print to check session state
-    except AttributeError:
-        print("session is not a Session instance:", session)
+main()
 
 root.mainloop()
