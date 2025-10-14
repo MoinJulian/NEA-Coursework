@@ -110,8 +110,10 @@ def settings():
 
                 if update_data:
                     update_response = requests.put("http://127.0.0.1:8000/v1/user", headers={
-                        "Authorization": f"Bearer {session.access_token}"
+                        "Authorization": f"Bearer {session.access_token}",
                     }, json=update_data)
+
+                    print(update_response.json())
 
                     if update_response.status_code == 200:
                         tk.Label(root, text="Settings updated successfully!").pack(pady=20)

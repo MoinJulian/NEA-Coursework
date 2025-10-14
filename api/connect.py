@@ -15,6 +15,6 @@ Creates the supabase client
 
 Args:
     url (str): The Supabase Project Url
-    key (str): The Supabase Anon Key
+    key (str): The Supabase Service Role Key
 """
 supabase: Client = create_client(url, key)
