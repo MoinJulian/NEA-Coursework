@@ -31,7 +31,35 @@ def login():
         session = session or Session()  # Ensure session is not None
     except AttributeError:
         print("session is not a Session instance:", session)
+    dashboard()
     return session
+
+def dashboard():
+    global session
+    # Delete the current window's contents
+    for widget in root.winfo_children():
+        widget.destroy()
+    # Create the dashboard page
+    result = None
+
+    def load():
+        nonlocal result
+        response = requests.get("http://127.0.0.1:8000/v1/user", headers={
+            "Authorization": f"Bearer {session.access_token}"
+        })
+
+        print("User endpoint response:", response)  # Debug print to check status code
+
+        if response.status_code == 200:
+            user_data = response.json()
+            tk.Label(root, text=f"Welcome, {user_data['user']['email']}!").pack(pady=20)
+            result = session
+        else:
+            tk.Label(root, text="Failed to load user data. Please log in again.").pack(pady=20)
+            result = None
+
+    load()
+    return result
 
 root = tk.Tk()
 root.title("RuleShot™")
