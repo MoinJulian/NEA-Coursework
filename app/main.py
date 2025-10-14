@@ -15,7 +15,7 @@ def register():
     else:
         session = result
     try:
-        print(session.__dict__)  # Debug print to check session state
+        session = session or Session()  # Ensure session is not None
     except AttributeError:
         print("session is not a Session instance:", session)
     return session
@@ -28,7 +28,7 @@ def login():
     else:
         session = result
     try:
-        print(session.__dict__)  # Debug print to check session state
+        session = session or Session()  # Ensure session is not None
     except AttributeError:
         print("session is not a Session instance:", session)
     return session
@@ -43,6 +43,13 @@ register_button.pack(pady=20)
 login_button = tk.Button(root, text="Login", command=login)
 login_button.pack(pady=20)
 
-print(session.__dict__)  # Debug print to check session state
+test_button = tk.Button(root, text="Test Session", command=lambda: print_session(session))
+test_button.pack(pady=20)
+
+def print_session(session):
+    try:
+        print(session.__dict__)  # Debug print to check session state
+    except AttributeError:
+        print("session is not a Session instance:", session)
 
 root.mainloop()
