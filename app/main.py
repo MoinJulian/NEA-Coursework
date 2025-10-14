@@ -48,11 +48,11 @@ def dashboard():
             "Authorization": f"Bearer {session.access_token}"
         })
 
-        print("User endpoint response:", response)  # Debug print to check status code
-
         if response.status_code == 200:
             user_data = response.json()
             tk.Label(root, text=f"Welcome, {user_data['user']['email']}!").pack(pady=20)
+
+            tk.Button(root, text="Logout", command=logout).pack(pady=20)
             result = session
         else:
             tk.Label(root, text="Failed to load user data. Please log in again.").pack(pady=20)
@@ -60,6 +60,14 @@ def dashboard():
 
     load()
     return result
+
+def logout():
+    global session
+    session = Session()
+    for widget in root.winfo_children():
+        widget.destroy()
+    tk.Label(root, text="Logged out successfully.").pack(pady=20)
+    root.after(10000, root.quit)
 
 root = tk.Tk()
 root.title("RuleShot™")
