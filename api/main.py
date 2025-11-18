@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from routes.user_endpoint import getUser, updateUser
 from routes.signin_endpoint import signinEndpoint
 from routes.signup_endpoint import signupEndpoint
@@ -6,8 +7,57 @@ from routes.dashboard_endpoint import getDashboard
 from routes.leaderboard_endpoint import getLeaderboard
 from routes.lesson_endpoint import getLessonById, submitAnswer, completeLesson
 from auth.signup import signup
+import asyncio
+from contextlib import asynccontextmanager
 
-app = FastAPI()
+
+# Import daily reset task
+try:
+    from utils.daily_reset import daily_reset_task
+except ImportError:
+    daily_reset_task = None
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup: Start the daily reset task
+    if daily_reset_task:
+        task = asyncio.create_task(daily_reset_task())
+    yield
+    # Shutdown: Cancel the daily reset task
+    if daily_reset_task:
+        task.cancel()
+
+
+app = FastAPI(
+    title="RuleShot™ Language Learning API",
+    description="API for language learning application with lessons, streaks, and gamification",
+    version="1.0.0",
+    lifespan=lifespan
+)
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with specific origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/")
+async def root():
+    return {
+        "message": "Welcome to RuleShot™ API",
+        "version": "1.0.0",
+        "docs": "/docs",
+        "endpoints": {
+            "auth": ["/v1/signup", "/v1/signin"],
+            "user": ["/v1/user", "/v1/dashboard"],
+            "lessons": ["/v1/lessons/{lesson_id}"],
+            "leaderboard": ["/v1/leaderboard"]
+        }
+    }
 
 @app.post("/v1/signup")
 async def signupRoute(request: Request):

@@ -10,7 +10,11 @@ async def getDashboard(request):
     Returns:
         dict: Dashboard data including next lesson, streak, hearts, xp, leaderboard, and lessons completed.
     """
-    token = request.headers.get("Authorization").split(" ")[1]
+    auth_header = request.headers.get("Authorization")
+    if not auth_header or " " not in auth_header:
+        raise HTTPException(status_code=401, detail="Authorization token required")
+    
+    token = auth_header.split(" ")[1]
     
     try:
         # Get authenticated user

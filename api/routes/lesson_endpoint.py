@@ -14,7 +14,11 @@ async def getLessonById(lesson_id: str, request):
     Returns:
         dict: Lesson data with questions and options
     """
-    token = request.headers.get("Authorization").split(" ")[1]
+    auth_header = request.headers.get("Authorization")
+    if not auth_header or " " not in auth_header:
+        raise HTTPException(status_code=401, detail="Authorization token required")
+    
+    token = auth_header.split(" ")[1]
     
     try:
         # Verify user is authenticated
@@ -23,6 +27,9 @@ async def getLessonById(lesson_id: str, request):
         
         # Get user profile to check hearts
         profile = supabase.table("profiles").select("hearts").eq("id", user_id).single().execute()
+        
+        if not profile.data:
+            raise HTTPException(status_code=404, detail="Profile not found")
         
         if profile.data["hearts"] <= 0:
             raise HTTPException(status_code=400, detail="No hearts remaining. Come back tomorrow!")
@@ -68,7 +75,11 @@ async def submitAnswer(lesson_id: str, question_id: str, selected_option_id: str
     Returns:
         dict: Result of answer submission
     """
-    token = request.headers.get("Authorization").split(" ")[1]
+    auth_header = request.headers.get("Authorization")
+    if not auth_header or " " not in auth_header:
+        raise HTTPException(status_code=401, detail="Authorization token required")
+    
+    token = auth_header.split(" ")[1]
     
     try:
         # Verify user is authenticated
@@ -86,6 +97,10 @@ async def submitAnswer(lesson_id: str, question_id: str, selected_option_id: str
         # If wrong, deduct a heart
         if not is_correct:
             profile = supabase.table("profiles").select("hearts").eq("id", user_id).single().execute()
+            
+            if not profile.data:
+                raise HTTPException(status_code=404, detail="Profile not found")
+            
             current_hearts = profile.data["hearts"]
             
             if current_hearts > 0:
@@ -121,7 +136,11 @@ async def completeLesson(lesson_id: str, request, completion_data: dict):
     Returns:
         dict: Result of lesson completion
     """
-    token = request.headers.get("Authorization").split(" ")[1]
+    auth_header = request.headers.get("Authorization")
+    if not auth_header or " " not in auth_header:
+        raise HTTPException(status_code=401, detail="Authorization token required")
+    
+    token = auth_header.split(" ")[1]
     
     try:
         # Verify user is authenticated

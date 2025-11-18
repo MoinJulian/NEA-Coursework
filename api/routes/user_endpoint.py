@@ -3,7 +3,11 @@ from connect import supabase
 
 
 async def getUser(request):
-    token = request.headers.get("Authorization").split(" ")[1]
+    auth_header = request.headers.get("Authorization")
+    if not auth_header or " " not in auth_header:
+        raise HTTPException(status_code=401, detail="Authorization token required")
+    
+    token = auth_header.split(" ")[1]
     try:
         response = supabase.auth.get_user(token)
         return response
@@ -12,7 +16,11 @@ async def getUser(request):
 
 
 async def updateUser(request, user_update):
-    access_token = request.headers.get("Authorization").split(" ")[1]
+    auth_header = request.headers.get("Authorization")
+    if not auth_header or " " not in auth_header:
+        raise HTTPException(status_code=401, detail="Authorization token required")
+    
+    access_token = auth_header.split(" ")[1]
     try:
         if access_token is None:
             raise HTTPException(status_code=400, detail="Access token is required")
