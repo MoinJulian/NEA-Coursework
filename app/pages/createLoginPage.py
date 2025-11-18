@@ -28,10 +28,12 @@ def createLoginPage(tk, root, requests, session):
 
         if response.status_code == 200:
             messagebox.showinfo("Success", "Login successful!")
-            session.email = email
             data = response.json()
+            session.email = email
             session.access_token = data.get("session", {}).get("access_token")
             session.refresh_token = data.get("session", {}).get("refresh_token")
+            session.user_id = data.get("user", {}).get("id")
+            session.profile = data.get("profile")
             result = session
             login_window.destroy()
         else:
