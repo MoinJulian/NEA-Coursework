@@ -1,149 +1,102 @@
 import tkinter as tk
-import requests
-from pages.createLoginPage import createLoginPage
 from session import Session
 from pages.createRegisterPage import createRegisterPage
+from pages.createLoginPage import createLoginPage
+from pages.createDashboardPage import createDashboardPage
+from pages.createLessonPage import createLessonPage
+from pages.createLeaderboardPage import createLeaderboardPage
+from pages.createSettingsPage import createSettingsPage
 
+# Create root window
 root = tk.Tk()
 root.title("RuleShot™")
-root.geometry("400x300")
+root.geometry("800x600")
 
+# Create session
 session = Session()
 
+
+def show_main_menu():
+    """Show the main menu (login/register)"""
+    # Clear window
+    for widget in root.winfo_children():
+        widget.destroy()
+    
+    # Title
+    title_frame = tk.Frame(root)
+    title_frame.pack(expand=True)
+    
+    tk.Label(title_frame, text="RuleShot™", font=("Arial", 24, "bold")).pack(pady=20)
+    tk.Label(title_frame, text="Learn Golf Rules Through Practice", 
+             font=("Arial", 12)).pack(pady=10)
+    
+    button_frame = tk.Frame(title_frame)
+    button_frame.pack(pady=30)
+    
+    tk.Button(button_frame, text="Login", command=login, 
+             width=20, height=2, font=("Arial", 12)).pack(pady=10)
+    tk.Button(button_frame, text="Register", command=register, 
+             width=20, height=2, font=("Arial", 12)).pack(pady=10)
+
+
 def register():
+    """Handle registration"""
     global session
-    result = createRegisterPage(tk, root, requests, session)
-    if result is None:
-        # createRegisterPage probably mutated the passed session in-place
-        print("createRegisterPage returned None; keeping existing session")
-    else:
+    result = createRegisterPage(tk, root, session)
+    if result and result.is_authenticated():
         session = result
-    try:
-        session = session or Session()  # Ensure session is not None
-    except AttributeError:
-        print("session is not a Session instance:", session)
-    return session
+        # After registration, user should login
+        tk.messagebox.showinfo("Success", "Please login with your new account")
+        show_main_menu()
+
 
 def login():
+    """Handle login"""
     global session
-    result = createLoginPage(tk, root, requests, session)
-    if result is None:
-        print("createLoginPage returned None; keeping existing session")
-    else:
+    result = createLoginPage(tk, root, session)
+    if result and result.is_authenticated():
         session = result
-    try:
-        session = session or Session()  # Ensure session is not None
-    except AttributeError:
-        print("session is not a Session instance:", session)
-    dashboard()
-    return session
+        show_dashboard()
 
-def dashboard():
-    global session
-    # Delete the current window's contents
-    for widget in root.winfo_children():
-        widget.destroy()
-    # Create the dashboard page
-    result = None
 
-    def load():
-        nonlocal result
-        response = requests.get("http://127.0.0.1:8000/v1/user", headers={
-            "Authorization": f"Bearer {session.access_token}"
-        })
+def show_dashboard():
+    """Show the dashboard"""
+    createDashboardPage(
+        tk, root, session,
+        on_logout=logout,
+        on_settings=show_settings,
+        on_start_lesson=start_lesson,
+        on_view_leaderboard=show_leaderboard
+    )
 
-        print(response.status_code, response.text)  # Debugging line
 
-        if response.status_code == 200:
-            user_data = response.json()
-            tk.Label(root, text=f"Welcome, {user_data['user']['email']}!").pack(pady=20)
+def start_lesson(lesson_id):
+    """Start a lesson"""
+    createLessonPage(
+        tk, root, session, lesson_id,
+        on_complete=show_dashboard
+    )
 
-            tk.Button(root, text="Logout", command=logout).pack(pady=20)
 
-            tk.Button(root, text="Settings", command=settings).pack(pady=20)
-            result = session
-        else:
-            tk.Label(root, text="Failed to load user data. Please log in again.").pack(pady=20)
-            result = None
+def show_leaderboard():
+    """Show the leaderboard"""
+    createLeaderboardPage(tk, root, session, on_back=show_dashboard)
 
-    load()
-    return result
+
+def show_settings():
+    """Show settings page"""
+    createSettingsPage(tk, root, session, on_back=show_dashboard)
+
 
 def logout():
+    """Handle logout"""
     global session
-    session = Session()
-    for widget in root.winfo_children():
-        widget.destroy()
-    tk.Label(root, text="Logged out successfully.").pack(pady=20)
-    root.after(5000, main)  # Return to main after 5 seconds
+    session.logout()
+    show_main_menu()
 
-def settings():
-    global session
-    for widget in root.winfo_children():
-        widget.destroy()
 
-    result = None
+# Start with main menu
+show_main_menu()
 
-    def load():
-        nonlocal result
-        response = requests.get("http://127.0.0.1:8000/v1/user", headers={
-            "Authorization": f"Bearer {session.access_token}"
-        })
-
-        if response.status_code == 200:
-            user_data = response.json()
-            tk.Label(root, text="Email:").pack(pady=5)
-            email_entry = tk.Entry(root)
-            email_entry.insert(0, user_data['user']['email'])
-            email_entry.pack(pady=5)
-
-            tk.Label(root, text="Password:").pack(pady=5)
-            password_entry = tk.Entry(root, show="*")
-            password_entry.pack(pady=5)
-
-            def update_settings():
-                new_email = email_entry.get()
-                new_password = password_entry.get()
-                update_data = {}
-                if new_email != user_data['user']['email']:
-                    update_data['email'] = new_email
-                if new_password:
-                    update_data['password'] = new_password
-
-                if update_data:
-                    update_response = requests.put("http://127.0.0.1:8000/v1/user", headers={
-                        "Authorization": f"Bearer {session.access_token}",
-                    }, json=update_data)
-
-                    print(update_response.json())
-
-                    if update_response.status_code == 200:
-                        tk.Label(root, text="Settings updated successfully!").pack(pady=20)
-                    else:
-                        tk.Label(root, text="Failed to update settings.").pack(pady=20)
-
-            tk.Button(root, text="Update Settings", command=update_settings).pack(pady=20)
-
-            result = session
-        else:
-            tk.Label(root, text="Failed to load user data. Please log in again.").pack(pady=20)
-            result = None
-
-    tk.Label(root, text="Settings Page").pack(pady=5)
-    tk.Button(root, text="Back to Dashboard", command=dashboard).pack(pady=5)
-
-    load()
-    return result
-
-def main():
-    global root
-
-    register_button = tk.Button(root, text="Register", command=register)
-    register_button.pack(pady=20)
-
-    login_button = tk.Button(root, text="Login", command=login)
-    login_button.pack(pady=20)
-
-main()
-
+# Run the application
 root.mainloop()

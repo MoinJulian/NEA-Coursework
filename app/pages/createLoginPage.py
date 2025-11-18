@@ -1,43 +1,42 @@
 from tkinter import messagebox
 
 
-def createLoginPage(tk, root, requests, session):
+def createLoginPage(tk, root, session):
+    """Create login page supporting email or username"""
     login_window = tk.Toplevel(root)
     login_window.title("Login")
-    login_window.geometry("300x200")
-
-    tk.Label(login_window, text="Email:").pack(pady=5)
-    email_entry = tk.Entry(login_window)
-    email_entry.pack(pady=5)
-
+    login_window.geometry("400x300")
+    
+    tk.Label(login_window, text="Email or Username:").pack(pady=5)
+    identifier_entry = tk.Entry(login_window, width=30)
+    identifier_entry.pack(pady=5)
+    
     tk.Label(login_window, text="Password:").pack(pady=5)
-    password_entry = tk.Entry(login_window, show="*")
+    password_entry = tk.Entry(login_window, show="*", width=30)
     password_entry.pack(pady=5)
-
+    
     result = None
-
+    
     def login():
         nonlocal result
-        email = email_entry.get()
+        identifier = identifier_entry.get().strip()
         password = password_entry.get()
-
-        response = requests.post("http://127.0.0.1:8000/v1/signin", json={
-            "email": email,
-            "password": password
-        })
-
-        if response.status_code == 200:
+        
+        try:
+            # Login via API
+            response = session.api_client.login(identifier, password)
+            
+            # Set user data in session
+            session.set_user(response.get("user"))
+            
             messagebox.showinfo("Success", "Login successful!")
-            session.email = email
-            data = response.json()
-            session.access_token = data.get("session", {}).get("access_token")
-            session.refresh_token = data.get("session", {}).get("refresh_token")
             result = session
             login_window.destroy()
-        else:
-            messagebox.showerror("Error", f"Login failed: {response.json().get('detail', 'Unknown error')}")
-
-    tk.Button(login_window, text="Login", command=login).pack(pady=20)
-
+            
+        except Exception as e:
+            messagebox.showerror("Error", f"Login failed: {str(e)}")
+    
+    tk.Button(login_window, text="Login", command=login, width=20).pack(pady=20)
+    
     login_window.wait_window()
     return result
