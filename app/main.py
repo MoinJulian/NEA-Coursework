@@ -52,6 +52,8 @@ def dashboard():
             "Authorization": f"Bearer {session.access_token}"
         })
 
+        print(response.status_code, response.text)  # Debugging line
+
         if response.status_code == 200:
             user_data = response.json()
             tk.Label(root, text=f"Welcome, {user_data['user']['email']}!").pack(pady=20)
