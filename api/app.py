@@ -594,4 +594,5 @@ def deduct_heart_endpoint(current_user):
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
-    app.run(debug=True, host="0.0.0.0", port=port)
+    debug_mode = os.getenv("FLASK_ENV", "production") == "development"
+    app.run(debug=debug_mode, host="0.0.0.0", port=port)
