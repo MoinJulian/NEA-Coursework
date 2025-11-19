@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
-from routes.user_endpoint import getUser, updateUser
-from routes.signin_endpoint import signinEndpoint
-from routes.signup_endpoint import signupEndpoint
+from api.routes.userEndpoint import getUser, updateUser
+from api.routes.signinEndpoint import signinEndpoint
+from api.routes.signupEndpoint import signupEndpoint
 from auth.signup import signup
 
 app = FastAPI()
