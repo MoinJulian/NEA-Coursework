@@ -1,7 +1,4 @@
-from pages.createLessonPage import createLessonPage
-from pages.createLeaderboardPage import createLeaderboardPage
 from session import Session
-import main
 
 def createDashboardPage(tk, root, requests, session):
     """
@@ -44,7 +41,7 @@ def createDashboardPage(tk, root, requests, session):
         tk.Label(root, text=next_lesson.get('title', 'Untitled')).pack()
         
         def start_lesson():
-            
+            from pages.createLessonPage import createLessonPage
             createLessonPage(tk, root, requests, session, next_lesson['id'])
         
         tk.Button(root, text="Start Lesson", command=start_lesson, bg="green", fg="white").pack(pady=10)
@@ -61,7 +58,7 @@ def createDashboardPage(tk, root, requests, session):
         tk.Label(leaderboard_frame, text=rank_text).pack()
     
     def view_full_leaderboard():
-        
+        from pages.createLeaderboardPage import createLeaderboardPage
         createLeaderboardPage(tk, root, requests, session)
     
     tk.Button(root, text="View Full Leaderboard", command=view_full_leaderboard).pack(pady=10)
@@ -74,6 +71,7 @@ def createDashboardPage(tk, root, requests, session):
         for widget in root.winfo_children():
             widget.destroy()
         # Return to main menu
+        import main
         main.main()
     
     tk.Button(root, text="Logout", command=logout).pack(pady=10)
