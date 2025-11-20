@@ -377,266 +377,1464 @@ def seed_options(questions):
     if not questions:
         print("No questions to create options for")
         return
-    
+
+    import uuid
+
     options = [
         # ---- LESSON 1 ----
-        "A: A ball the player is using after a stroke from the teeing area.",
-        "B: Any ball lying on the course, regardless of who hit it.",
-        "C: Only a ball on the putting green.",
-        "D: Only a ball declared in play by the marker.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[0]["id"],
+            "option_text": "A: A ball the player is using after a stroke from the teeing area.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[0]["id"],
+            "option_text": "B: Any ball lying on the course, regardless of who hit it.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[0]["id"],
+            "option_text": "C: Only a ball on the putting green.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[0]["id"],
+            "option_text": "D: Only a ball declared in play by the marker.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: When not found within 3 minutes of search.",
-        "B: When it rolls into deep rough.",
-        "C: When another player plays it by accident.",
-        "D: When it is unplayable.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[1]["id"],
+            "option_text": "A: When not found within 3 minutes of search.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[1]["id"],
+            "option_text": "B: When it rolls into deep rough.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[1]["id"],
+            "option_text": "C: When another player plays it by accident.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[1]["id"],
+            "option_text": "D: When it is unplayable.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: To clarify essential terms used throughout the rules.",
-        "B: To give strategy tips for difficult holes.",
-        "C: To explain scoring formats.",
-        "D: To describe equipment standards.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[2]["id"],
+            "option_text": "A: To clarify essential terms used throughout the rules.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[2]["id"],
+            "option_text": "B: To give strategy tips for difficult holes.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[2]["id"],
+            "option_text": "C: To explain scoring formats.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[2]["id"],
+            "option_text": "D: To describe equipment standards.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: When the player makes a forward movement intending to hit the ball.",
-        "B: Only when the ball travels at least one meter.",
-        "C: Only when contact is made.",
-        "D: Only after the scorecard is signed.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[3]["id"],
+            "option_text": "A: When the player makes a forward movement intending to hit the ball.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[3]["id"],
+            "option_text": "B: Only when the ball travels at least one meter.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[3]["id"],
+            "option_text": "C: Only when contact is made.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[3]["id"],
+            "option_text": "D: Only after the scorecard is signed.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Two penalty strokes.",
-        "B: One penalty stroke.",
-        "C: Loss of hole.",
-        "D: Replay the stroke.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[4]["id"],
+            "option_text": "A: Two penalty strokes.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[4]["id"],
+            "option_text": "B: One penalty stroke.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[4]["id"],
+            "option_text": "C: Loss of hole.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[4]["id"],
+            "option_text": "D: Replay the stroke.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Ground under repair, immovable obstructions, temporary water, animal holes.",
-        "B: Any bunker.",
-        "C: Any penalty area.",
-        "D: Out-of-bounds.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[5]["id"],
+            "option_text": "A: Ground under repair, immovable obstructions, temporary water, animal holes.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[5]["id"],
+            "option_text": "B: Any bunker.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[5]["id"],
+            "option_text": "C: Any penalty area.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[5]["id"],
+            "option_text": "D: Out-of-bounds.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Temporary water gives free relief; penalty areas do not.",
-        "B: Temporary water is always yellow; penalty areas are blue.",
-        "C: Temporary water is always near greens.",
-        "D: Penalty areas only appear on par 5 holes.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[6]["id"],
+            "option_text": "A: Temporary water gives free relief; penalty areas do not.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[6]["id"],
+            "option_text": "B: Temporary water is always yellow; penalty areas are blue.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[6]["id"],
+            "option_text": "C: Temporary water is always near greens.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[6]["id"],
+            "option_text": "D: Penalty areas only appear on par 5 holes.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: When it stops moving and stays in position.",
-        "B: When the player wants to hit it.",
-        "C: When it’s on the fairway.",
-        "D: When it’s on a tee.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[7]["id"],
+            "option_text": "A: When it stops moving and stays in position.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[7]["id"],
+            "option_text": "B: When the player wants to hit it.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[7]["id"],
+            "option_text": "C: When it’s on the fairway.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[7]["id"],
+            "option_text": "D: When it’s on a tee.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Playing again from the previous spot with one penalty stroke.",
-        "B: Dropping two club-lengths from the ball.",
-        "C: Free relief from abnormal conditions.",
-        "D: Relief only available in bunkers.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[8]["id"],
+            "option_text": "A: Playing again from the previous spot with one penalty stroke.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[8]["id"],
+            "option_text": "B: Dropping two club-lengths from the ball.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[8]["id"],
+            "option_text": "C: Free relief from abnormal conditions.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[8]["id"],
+            "option_text": "D: Relief only available in bunkers.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: When searching for the ball.",
-        "B: When preparing the backswing.",
-        "C: When addressing the ball.",
-        "D: When walking past other players.",
-
-
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[9]["id"],
+            "option_text": "A: When searching for the ball.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[9]["id"],
+            "option_text": "B: When preparing the backswing.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[9]["id"],
+            "option_text": "C: When addressing the ball.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[9]["id"],
+            "option_text": "D: When walking past other players.",
+            "is_correct": False,
+            "option_order": 4
+        },
         # ---- LESSON 2 ----
-        "A: From anywhere inside the teeing area.",
-        "B: From one club-length behind the markers.",
-        "C: From between the markers only.",
-        "D: From anywhere on the tee box slope.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[10]["id"],
+            "option_text": "A: From anywhere inside the teeing area.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[10]["id"],
+            "option_text": "B: From one club-length behind the markers.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[10]["id"],
+            "option_text": "C: From between the markers only.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[10]["id"],
+            "option_text": "D: From anywhere on the tee box slope.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Two penalty strokes.",
-        "B: One penalty stroke.",
-        "C: Replay the stroke without penalty.",
-        "D: Loss of hole immediately.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[11]["id"],
+            "option_text": "A: Two penalty strokes.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[11]["id"],
+            "option_text": "B: One penalty stroke.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[11]["id"],
+            "option_text": "C: Replay the stroke without penalty.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[11]["id"],
+            "option_text": "D: Loss of hole immediately.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: The player farthest from the hole plays first.",
-        "B: The lowest handicap plays first.",
-        "C: The highest score plays first.",
-        "D: Order does not matter in stroke play.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[12]["id"],
+            "option_text": "A: The player farthest from the hole plays first.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[12]["id"],
+            "option_text": "B: The lowest handicap plays first.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[12]["id"],
+            "option_text": "C: The highest score plays first.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[12]["id"],
+            "option_text": "D: Order does not matter in stroke play.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Players ready to play should hit when safe, regardless of order.",
-        "B: Players always hit according to handicap.",
-        "C: Only the fastest player may play.",
-        "D: Only applies when putting.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[13]["id"],
+            "option_text": "A: Players ready to play should hit when safe, regardless of order.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[13]["id"],
+            "option_text": "B: Players always hit according to handicap.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[13]["id"],
+            "option_text": "C: Only the fastest player may play.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[13]["id"],
+            "option_text": "D: Only applies when putting.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: When any part of the ball is below the surface and at rest in the hole.",
-        "B: Only when the flagstick is removed.",
-        "C: Only when the ball stops in the center of the cup.",
-        "D: Only when the marker confirms it.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[14]["id"],
+            "option_text": "A: When any part of the ball is below the surface and at rest in the hole.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[14]["id"],
+            "option_text": "B: Only when the flagstick is removed.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[14]["id"],
+            "option_text": "C: Only when the ball stops in the center of the cup.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[14]["id"],
+            "option_text": "D: Only when the marker confirms it.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Lift the ball if it interferes and replace after the other player plays.",
-        "B: Ignore interference.",
-        "C: Mark it but do not move it.",
-        "D: Add one penalty stroke and continue.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[15]["id"],
+            "option_text": "A: Lift the ball if it interferes and replace after the other player plays.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[15]["id"],
+            "option_text": "B: Ignore interference.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[15]["id"],
+            "option_text": "C: Mark it but do not move it.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[15]["id"],
+            "option_text": "D: Add one penalty stroke and continue.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: The player must take free relief and cannot play from the wrong green.",
-        "B: The player may play from the wrong green.",
-        "C: The player must take penalty relief.",
-        "D: No action required.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[16]["id"],
+            "option_text": "A: The player must take free relief and cannot play from the wrong green.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[16]["id"],
+            "option_text": "B: The player may play from the wrong green.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[16]["id"],
+            "option_text": "C: The player must take penalty relief.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[16]["id"],
+            "option_text": "D: No action required.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: When lifting the ball except in a few restricted situations.",
-        "B: Only when on the fairway.",
-        "C: Only when a referee is present.",
-        "D: Never.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[17]["id"],
+            "option_text": "A: When lifting the ball except in a few restricted situations.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[17]["id"],
+            "option_text": "B: Only when on the fairway.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[17]["id"],
+            "option_text": "C: Only when a referee is present.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[17]["id"],
+            "option_text": "D: Never.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Two penalty strokes.",
-        "B: One penalty stroke.",
-        "C: No penalty but stroke must be replayed.",
-        "D: Loss of hole.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[18]["id"],
+            "option_text": "A: Two penalty strokes.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[18]["id"],
+            "option_text": "B: One penalty stroke.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[18]["id"],
+            "option_text": "C: No penalty but stroke must be replayed.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[18]["id"],
+            "option_text": "D: Loss of hole.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Play at a prompt pace and be ready when it’s your turn.",
-        "B: Always play within 20 seconds.",
-        "C: Keep score while walking.",
-        "D: Let all groups behind go through.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[19]["id"],
+            "option_text": "A: Play at a prompt pace and be ready when it’s your turn.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[19]["id"],
+            "option_text": "B: Always play within 20 seconds.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[19]["id"],
+            "option_text": "C: Keep score while walking.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[19]["id"],
+            "option_text": "D: Let all groups behind go through.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
 
         # ---- LESSON 3 ----
-        "A: When abnormal conditions physically interfere with stance or swing.",
-        "B: Anytime the lie is bad.",
-        "C: Only on the fairway.",
-        "D: Only when on the green.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[20]["id"],
+            "option_text": "A: When abnormal conditions physically interfere with stance or swing.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[20]["id"],
+            "option_text": "B: Anytime the lie is bad.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[20]["id"],
+            "option_text": "C: Only on the fairway.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[20]["id"],
+            "option_text": "D: Only when on the green.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: The point closest to the ball providing full relief without being nearer the hole.",
-        "B: Any point two club-lengths away.",
-        "C: A point chosen by the marker.",
-        "D: A point chosen by the nearest player.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[21]["id"],
+            "option_text": "A: The point closest to the ball providing full relief without being nearer the hole.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[21]["id"],
+            "option_text": "B: Any point two club-lengths away.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[21]["id"],
+            "option_text": "C: A point chosen by the marker.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[21]["id"],
+            "option_text": "D: A point chosen by the nearest player.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Drop from knee height into the relief area.",
-        "B: Drop from shoulder height.",
-        "C: Roll the ball by hand.",
-        "D: Place the ball instead of dropping.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[22]["id"],
+            "option_text": "A: Drop from knee height into the relief area.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[22]["id"],
+            "option_text": "B: Drop from shoulder height.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[22]["id"],
+            "option_text": "C: Roll the ball by hand.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[22]["id"],
+            "option_text": "D: Place the ball instead of dropping.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: One club-length unless otherwise stated.",
-        "B: Two club-lengths always.",
-        "C: Unlimited distance.",
-        "D: Only half a club-length.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[23]["id"],
+            "option_text": "A: One club-length unless otherwise stated.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[23]["id"],
+            "option_text": "B: Two club-lengths always.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[23]["id"],
+            "option_text": "C: Unlimited distance.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[23]["id"],
+            "option_text": "D: Only half a club-length.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Anytime the player decides they cannot or should not play the ball.",
-        "B: Only when the ball is in a bunker.",
-        "C: Only when the ball is on the tee.",
-        "D: Only when inside a penalty area.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[24]["id"],
+            "option_text": "A: Anytime the player decides they cannot or should not play the ball.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[24]["id"],
+            "option_text": "B: Only when the ball is in a bunker.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[24]["id"],
+            "option_text": "C: Only when the ball is on the tee.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[24]["id"],
+            "option_text": "D: Only when inside a penalty area.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Stroke-and-distance, back-on-the-line, or two club-lengths relief.",
-        "B: Free relief only.",
-        "C: Drop anywhere on the fairway.",
-        "D: Only replay from the tee.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[25]["id"],
+            "option_text": "A: Stroke-and-distance, back-on-the-line, or two club-lengths relief.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[25]["id"],
+            "option_text": "B: Free relief only.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[25]["id"],
+            "option_text": "C: Drop anywhere on the fairway.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[25]["id"],
+            "option_text": "D: Only replay from the tee.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: One penalty stroke.",
-        "B: Two penalty strokes.",
-        "C: No penalty.",
-        "D: Loss of hole.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[26]["id"],
+            "option_text": "A: One penalty stroke.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[26]["id"],
+            "option_text": "B: Two penalty strokes.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[26]["id"],
+            "option_text": "C: No penalty.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[26]["id"],
+            "option_text": "D: Loss of hole.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: When an animal threatens the player or interferes with the lie.",
-        "B: Only when a referee approves.",
-        "C: Only when on the putting green.",
-        "D: Only when the ball is moving.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[27]["id"],
+            "option_text": "A: When an animal threatens the player or interferes with the lie.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[27]["id"],
+            "option_text": "B: Only when a referee approves.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[27]["id"],
+            "option_text": "C: Only when on the putting green.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[27]["id"],
+            "option_text": "D: Only when the ball is moving.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Defined by the rule: one or two club-lengths depending on relief type.",
-        "B: Always five meters.",
-        "C: Always one meter.",
-        "D: Always two meters.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[28]["id"],
+            "option_text": "A: Defined by the rule: one or two club-lengths depending on relief type.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[28]["id"],
+            "option_text": "B: Always five meters.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[28]["id"],
+            "option_text": "C: Always one meter.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[28]["id"],
+            "option_text": "D: Always two meters.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Play as it lies, take stroke-and-distance, or drop with penalty outside the area.",
-        "B: Always drop for free.",
-        "C: Must play from the penalty area.",
-        "D: Only replay from the tee.",
-
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[29]["id"],
+            "option_text": "A: Play as it lies, take stroke-and-distance, or drop with penalty outside the area.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[29]["id"],
+            "option_text": "B: Always drop for free.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[29]["id"],
+            "option_text": "C: Must play from the penalty area.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[29]["id"],
+            "option_text": "D: Only replay from the tee.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
         # ---- LESSON 4 ----
-        "A: After 3 minutes of search.",
-        "B: After 1 minute.",
-        "C: After 5 minutes.",
-        "D: Only when declared lost by the group.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[30]["id"],
+            "option_text": "A: After 3 minutes of search.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[30]["id"],
+            "option_text": "B: After 1 minute.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[30]["id"],
+            "option_text": "C: After 5 minutes.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[30]["id"],
+            "option_text": "D: Only when declared lost by the group.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: When searching or identifying the ball.",
-        "B: When addressing the ball.",
-        "C: When taking practice swings.",
-        "D: When lining up a putt.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[31]["id"],
+            "option_text": "A: When searching or identifying the ball.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[31]["id"],
+            "option_text": "B: When addressing the ball.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[31]["id"],
+            "option_text": "C: When taking practice swings.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[31]["id"],
+            "option_text": "D: When lining up a putt.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Correct the mistake by playing the correct ball.",
-        "B: Continue with the wrong ball.",
-        "C: Replay the hole.",
-        "D: No penalty ever applies.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[32]["id"],
+            "option_text": "A: Correct the mistake by playing the correct ball.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[32]["id"],
+            "option_text": "B: Continue with the wrong ball.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[32]["id"],
+            "option_text": "C: Replay the hole.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[32]["id"],
+            "option_text": "D: No penalty ever applies.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: When moved accidentally on the putting green.",
-        "B: When moved during the backswing.",
-        "C: When moved by the wind.",
-        "D: When moved by natural forces on the fairway.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[33]["id"],
+            "option_text": "A: When moved accidentally on the putting green.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[33]["id"],
+            "option_text": "B: When moved during the backswing.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[33]["id"],
+            "option_text": "C: When moved by the wind.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[33]["id"],
+            "option_text": "D: When moved by natural forces on the fairway.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Two penalty strokes.",
-        "B: One penalty stroke.",
-        "C: Loss of the next hole.",
-        "D: No penalty if unintentional.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[34]["id"],
+            "option_text": "A: Two penalty strokes.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[34]["id"],
+            "option_text": "B: One penalty stroke.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[34]["id"],
+            "option_text": "C: Loss of the next hole.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[34]["id"],
+            "option_text": "D: No penalty if unintentional.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Replace the ball at its original spot.",
-        "B: Play it as it lies.",
-        "C: Take penalty relief.",
-        "D: Continue without replacing.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[35]["id"],
+            "option_text": "A: Replace the ball at its original spot.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[35]["id"],
+            "option_text": "B: Play it as it lies.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[35]["id"],
+            "option_text": "C: Take penalty relief.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[35]["id"],
+            "option_text": "D: Continue without replacing.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Replace it unless moved by natural forces off the putting green.",
-        "B: Never replace it.",
-        "C: Replace only if the marker says so.",
-        "D: Replace only in bunkers.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[36]["id"],
+            "option_text": "A: Replace it unless moved by natural forces off the putting green.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[36]["id"],
+            "option_text": "B: Never replace it.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[36]["id"],
+            "option_text": "C: Replace only if the marker says so.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[36]["id"],
+            "option_text": "D: Replace only in bunkers.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Play a provisional to save time if lost or OB is possible.",
-        "B: Never play a provisional.",
-        "C: Only after referee approval.",
-        "D: Only when group agrees.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[37]["id"],
+            "option_text": "A: Play a provisional to save time if lost or OB is possible.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[37]["id"],
+            "option_text": "B: Never play a provisional.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[37]["id"],
+            "option_text": "C: Only after referee approval.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[37]["id"],
+            "option_text": "D: Only when group agrees.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: When it is played from a point closer to the hole than the original ball.",
-        "B: Immediately when announced.",
-        "C: Only when the ball travels 50m.",
-        "D: Only when the player signs the scorecard.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[38]["id"],
+            "option_text": "A: When it is played from a point closer to the hole than the original ball.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[38]["id"],
+            "option_text": "B: Immediately when announced.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[38]["id"],
+            "option_text": "C: Only when the ball travels 50m.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[38]["id"],
+            "option_text": "D: Only when the player signs the scorecard.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: When the original ball is lost or OB.",
-        "B: When preferred lies are in effect.",
-        "C: When on the green.",
-        "D: When in a bunker.",
-
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[39]["id"],
+            "option_text": "A: When the original ball is lost or OB.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[39]["id"],
+            "option_text": "B: When preferred lies are in effect.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[39]["id"],
+            "option_text": "C: When on the green.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[39]["id"],
+            "option_text": "D: When in a bunker.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
         # ---- LESSON 5 ----
-        "A: When the ball may be lost or out of bounds.",
-        "B: Anytime the player wants.",
-        "C: Only on the fairway.",
-        "D: Only during tournaments.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[40]["id"],
+            "option_text": "A: When the ball may be lost or out of bounds.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[40]["id"],
+            "option_text": "B: Anytime the player wants.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[40]["id"],
+            "option_text": "C: Only on the fairway.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[40]["id"],
+            "option_text": "D: Only during tournaments.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Stroke-and-distance applies.",
-        "B: One penalty stroke.",
-        "C: Free relief allowed.",
-        "D: No penalty in stroke play.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[41]["id"],
+            "option_text": "A: Stroke-and-distance applies.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[41]["id"],
+            "option_text": "B: One penalty stroke.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[41]["id"],
+            "option_text": "C: Free relief allowed.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[41]["id"],
+            "option_text": "D: No penalty in stroke play.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: When it is embedded in its own pitch mark in the general area.",
-        "B: Only on the green.",
-        "C: Only in bunkers.",
-        "D: Whenever the ball is dirty.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[42]["id"],
+            "option_text": "A: When it is embedded in its own pitch mark in the general area.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[42]["id"],
+            "option_text": "B: Only on the green.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[42]["id"],
+            "option_text": "C: Only in bunkers.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[42]["id"],
+            "option_text": "D: Whenever the ball is dirty.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: When in the general area and not in sand in bunkers.",
-        "B: Only on tees.",
-        "C: Only when plugged in bunkers.",
-        "D: Only during winter rules.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[43]["id"],
+            "option_text": "A: When in the general area and not in sand in bunkers.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[43]["id"],
+            "option_text": "B: Only on tees.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[43]["id"],
+            "option_text": "C: Only when plugged in bunkers.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[43]["id"],
+            "option_text": "D: Only during winter rules.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: No penalty.",
-        "B: One penalty stroke.",
-        "C: Two penalty strokes.",
-        "D: Replay required.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[44]["id"],
+            "option_text": "A: No penalty.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[44]["id"],
+            "option_text": "B: One penalty stroke.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[44]["id"],
+            "option_text": "C: Two penalty strokes.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[44]["id"],
+            "option_text": "D: Replay required.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Mark directly behind the ball before lifting.",
-        "B: Mark in front of the ball.",
-        "C: Mark anywhere within one meter.",
-        "D: No marking required.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[45]["id"],
+            "option_text": "A: Mark directly behind the ball before lifting.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[45]["id"],
+            "option_text": "B: Mark in front of the ball.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[45]["id"],
+            "option_text": "C: Mark anywhere within one meter.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[45]["id"],
+            "option_text": "D: No marking required.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: One penalty stroke.",
-        "B: Two penalty strokes.",
-        "C: No penalty and replace.",
-        "D: Loss of hole.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[46]["id"],
+            "option_text": "A: One penalty stroke.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[46]["id"],
+            "option_text": "B: Two penalty strokes.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[46]["id"],
+            "option_text": "C: No penalty and replace.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[46]["id"],
+            "option_text": "D: Loss of hole.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Play it as it lies or take unplayable-ball relief.",
-        "B: Replay from the tee only.",
-        "C: Must take free relief.",
-        "D: Declare ball lost immediately.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[47]["id"],
+            "option_text": "A: Play it as it lies or take unplayable-ball relief.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[47]["id"],
+            "option_text": "B: Replay from the tee only.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[47]["id"],
+            "option_text": "C: Must take free relief.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[47]["id"],
+            "option_text": "D: Declare ball lost immediately.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: The ball is holed with no penalty.",
-        "B: Replace the ball.",
-        "C: Add one penalty stroke.",
-        "D: Replay the putt.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[48]["id"],
+            "option_text": "A: The ball is holed with no penalty.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[48]["id"],
+            "option_text": "B: Replace the ball.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[48]["id"],
+            "option_text": "C: Add one penalty stroke.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[48]["id"],
+            "option_text": "D: Replay the putt.",
+            "is_correct": False,
+            "option_order": 4
+        },
 
-        "A: Mark and check the ball; replace if damaged.",
-        "B: Continue playing without checking.",
-        "C: Replace only with referee approval.",
-        "D: Take penalty relief.",
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[49]["id"],
+            "option_text": "A: Mark and check the ball; replace if damaged.",
+            "is_correct": True,
+            "option_order": 1
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[49]["id"],
+            "option_text": "B: Continue playing without checking.",
+            "is_correct": False,
+            "option_order": 2
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[49]["id"],
+            "option_text": "C: Replace only with referee approval.",
+            "is_correct": False,
+            "option_order": 3
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "question_id": questions[49]["id"],
+            "option_text": "D: Take penalty relief.",
+            "is_correct": False,
+            "option_order": 4
+        },
     ]
 
 
