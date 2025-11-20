@@ -1,10 +1,63 @@
 from fastapi import FastAPI, Request
-from api.routes.userEndpoint import getUser, updateUser
-from api.routes.signinEndpoint import signinEndpoint
-from api.routes.signupEndpoint import signupEndpoint
+from fastapi.middleware.cors import CORSMiddleware
+from routes.userEndpoint import getUser, updateUser
+from routes.signinEndpoint import signinEndpoint
+from routes.signupEndpoint import signupEndpoint
+from routes.dashboardEndpoint import getDashboard
+from routes.leaderboardEndpoint import getLeaderboard
+from routes.lessonEndpoint import getLessonById, submitAnswer, completeLesson
 from auth.signup import signup
+import asyncio
+from contextlib import asynccontextmanager
 
-app = FastAPI()
+
+# Import daily reset task
+try:
+    from utils.dailyReset import daily_reset_task
+except ImportError:
+    daily_reset_task = None
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup: Start the daily reset task
+    if daily_reset_task:
+        task = asyncio.create_task(daily_reset_task())
+    yield
+    # Shutdown: Cancel the daily reset task
+    if daily_reset_task:
+        task.cancel()
+
+
+app = FastAPI(
+    title="RuleShot™ Language Learning API",
+    description="API for language learning application with lessons, streaks, and gamification",
+    version="1.0.0",
+    lifespan=lifespan
+)
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with specific origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/")
+async def root():
+    return {
+        "message": "Welcome to RuleShot™ API",
+        "version": "1.0.0",
+        "docs": "/docs",
+        "endpoints": {
+            "auth": ["/v1/signup", "/v1/signin"],
+            "user": ["/v1/user", "/v1/dashboard"],
+            "lessons": ["/v1/lessons/{lesson_id}"],
+            "leaderboard": ["/v1/leaderboard"]
+        }
+    }
 
 @app.post("/v1/signup")
 async def signupRoute(request: Request):
@@ -21,3 +74,26 @@ async def userRoute(request: Request):
 @app.put("/v1/user")
 async def updateUserRoute(request: Request, user_update: dict):
     return await updateUser(request, user_update)
+
+@app.get("/v1/dashboard")
+async def dashboardRoute(request: Request):
+    return await getDashboard(request)
+
+@app.get("/v1/leaderboard")
+async def leaderboardRoute(page: int = 1, per_page: int = 10):
+    return await getLeaderboard(page, per_page)
+
+@app.get("/v1/lessons/{lesson_id}")
+async def getLessonRoute(lesson_id: str, request: Request):
+    return await getLessonById(lesson_id, request)
+
+@app.post("/v1/lessons/{lesson_id}/questions/{question_id}/answer")
+async def submitAnswerRoute(lesson_id: str, question_id: str, request: Request):
+    body = await request.json()
+    selected_option_id = body.get("selected_option_id")
+    return await submitAnswer(lesson_id, question_id, selected_option_id, request)
+
+@app.post("/v1/lessons/{lesson_id}/complete")
+async def completeLessonRoute(lesson_id: str, request: Request):
+    body = await request.json()
+    return await completeLesson(lesson_id, request, body)
