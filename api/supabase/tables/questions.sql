@@ -6,5 +6,4 @@ create table if not exists questions (
     created_at timestamp with time zone default now()
 );
 
--- Create index for lesson lookups
 create index if not exists idx_questions_lesson_id on questions(lesson_id);

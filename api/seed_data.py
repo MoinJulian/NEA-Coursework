@@ -1849,7 +1849,6 @@ def main():
     print("Starting database seeding...")
     print("-" * 50)
     
-    # Check if tables exist by trying to query them
     try:
         supabase.table("lessons").select("id").limit(1).execute()
         print("✓ Database tables are accessible")

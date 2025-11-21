@@ -10,6 +10,5 @@ create table if not exists completed_lessons (
     unique(user_id, lesson_id, completed_at)
 );
 
--- Create indexes for common queries
 create index if not exists idx_completed_lessons_user_id on completed_lessons(user_id);
 create index if not exists idx_completed_lessons_completed_at on completed_lessons(completed_at);

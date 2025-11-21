@@ -11,8 +11,5 @@ create table if not exists profiles (
     updated_at timestamp with time zone default now()
 );
 
--- Create index for username lookups
 create index if not exists idx_profiles_username on profiles(username);
-
--- Create index for leaderboard queries
 create index if not exists idx_profiles_xp on profiles(xp desc);

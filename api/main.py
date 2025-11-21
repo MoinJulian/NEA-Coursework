@@ -11,7 +11,6 @@ import asyncio
 from contextlib import asynccontextmanager
 
 
-# Import daily reset task
 try:
     from utils.dailyReset import daily_reset_task
 except ImportError:
@@ -20,11 +19,9 @@ except ImportError:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup: Start the daily reset task
     if daily_reset_task:
         task = asyncio.create_task(daily_reset_task())
     yield
-    # Shutdown: Cancel the daily reset task
     if daily_reset_task:
         task.cancel()
 
@@ -36,10 +33,9 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with specific origins
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

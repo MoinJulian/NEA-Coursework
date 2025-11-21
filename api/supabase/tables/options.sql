@@ -6,5 +6,4 @@ create table if not exists options (
     option_order integer not null
 );
 
--- Create index for question lookups
 create index if not exists idx_options_question_id on options(question_id);

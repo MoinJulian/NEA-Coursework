@@ -9,12 +9,4 @@ if env_path:
 
 url: str = os.getenv("SUPABASE_URL")
 key: str = os.getenv("SUPABASE_KEY")
-
-"""
-Creates the supabase client
-
-Args:
-    url (str): The Supabase Project Url
-    key (str): The Supabase Service Role Key
-"""
 supabase: Client = create_client(url, key)

@@ -22,7 +22,7 @@ def createRegisterPage(tk, root, requests, session):
     password_entry.pack(pady=5)
 
     result = None
-
+    
     def register():
         nonlocal result
         email = email_entry.get()
@@ -30,7 +30,6 @@ def createRegisterPage(tk, root, requests, session):
         handicap_str = handicap_entry.get()
         password = password_entry.get()
         
-        # Validate inputs
         if not email or not username or not handicap_str or not password:
             messagebox.showerror("Error", "All fields are required")
             return
@@ -40,8 +39,7 @@ def createRegisterPage(tk, root, requests, session):
         except ValueError:
             messagebox.showerror("Error", "Handicap must be a number")
             return
-
-        # use synchronous requests here
+        
         response = requests.post("http://127.0.0.1:8000/v1/signup", json={
             "email": email,
             "username": username,

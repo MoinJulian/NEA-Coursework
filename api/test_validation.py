@@ -1,22 +1,12 @@
-"""
-Simple validation tests for the signup functionality.
-Run with: python test_validation.py
-"""
-
 import re
 
 
 def validate_email(email: str) -> bool:
-    """Validate email format."""
     pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     return bool(re.match(pattern, email))
 
 
 def validate_password(password: str) -> tuple[bool, str]:
-    """
-    Validate password requirements.
-    Returns (is_valid, error_message).
-    """
     if len(password) < 8:
         return False, "Password must be at least 8 characters long"
     if not re.search(r'[A-Z]', password):

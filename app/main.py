@@ -15,12 +15,11 @@ def register():
     global session
     result = createRegisterPage(tk, root, requests, session)
     if result is None:
-        # createRegisterPage probably mutated the passed session in-place
         print("createRegisterPage returned None; keeping existing session")
     else:
         session = result
     try:
-        session = session or Session()  # Ensure session is not None
+        session = session or Session()
     except AttributeError:
         print("session is not a Session instance:", session)
     return session
@@ -33,7 +32,7 @@ def login():
     else:
         session = result
     try:
-        session = session or Session()  # Ensure session is not None
+        session = session or Session()
     except AttributeError:
         print("session is not a Session instance:", session)
     if session.access_token:
@@ -46,7 +45,7 @@ def logout():
     for widget in root.winfo_children():
         widget.destroy()
     tk.Label(root, text="Logged out successfully.").pack(pady=20)
-    root.after(5000, main)  # Return to main after 5 seconds
+    root.after(5000, main)
 
 def main():
     global root
